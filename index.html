@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falbne | Innopolis University Student</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    
+    <div class="app-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="glitch" data-text="Falbne">Falbne</h1>
+                <p class="tagline">Innopolis University Student</p>
+            </div>
+        </header>
+
+        <main>
+            <section class="about-section glass-panel">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            Hello! I'm a student at Innopolis University, pursuing my passion for technology and innovation.
+                            Innopolis University is a leading institution specializing in IT education and research in Russia.
+                        </p>
+                        <p>
+                            My academic journey involves exploring various aspects of computer science, 
+                            from software development to artificial intelligence and beyond.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="education-section glass-panel">
+                <h2>Education</h2>
+                <div class="education-card">
+                    <div class="university-logo">
+                        <div class="logo-3d">IU</div>
+                    </div>
+                    <div class="education-details">
+                        <h3>Innopolis University</h3>
+                        <p class="education-program">Computer Science Program</p>
+                        <p>
+                            Studying at one of Russia's most innovative technical universities, 
+                            focusing on cutting-edge technology and computer science.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section glass-panel">
+                <h2>Connect With Me</h2>
+                <div class="contact-methods">
+                    <a href="https://t.me/falbne" class="contact-card" target="_blank" rel="noopener noreferrer">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21.5 2l-18.5 8.5 5.5 2.5 10-7.5-7.5 10 2.5 5.5 8.5-18.5z"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-info">
+                            <h3>Telegram</h3>
+                            <p class="contact-value">@falbne</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> Falbne | Innopolis University Student</p>
+        </footer>
+    </div>
+
+    <script>
+        // 3D Background Animation
+        let scene, camera, renderer;
+        let particles;
+
+        function initThree() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x000000, 0);
+            document.getElementById('canvas-container').appendChild(renderer.domElement);
+            
+            // Create particles
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            
+            for (let i = 0; i < 1500; i++) {
+                const x = (Math.random() - 0.5) * 2000;
+                const y = (Math.random() - 0.5) * 2000;
+                const z = (Math.random() - 0.5) * 2000;
+                vertices.push(x, y, z);
+            }
+            
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            
+            const material = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 2,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            particles = new THREE.Points(geometry, material);
+            scene.add(particles);
+            
+            camera.position.z = 500;
+            
+            window.addEventListener('resize', onWindowResize);
+            
+            animate();
+        }
+        
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            particles.rotation.x += 0.0005;
+            particles.rotation.y += 0.0005;
+            
+            renderer.render(scene, camera);
+        }
+        
+        // Initialize 3D background and fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Three.js
+            initThree();
+            
+            // Add visible class to elements for fade-in animation
+            setTimeout(() => {
+                document.querySelector('.header').classList.add('visible');
+                
+                const sections = document.querySelectorAll('section');
+                sections.forEach((section, index) => {
+                    setTimeout(() => {
+                        section.classList.add('visible');
+                    }, 200 * (index + 1));
+                });
+                
+                document.querySelector('.footer').classList.add('visible');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
