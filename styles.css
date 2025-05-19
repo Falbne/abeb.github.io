@@ -86,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   position: relative;
   animation: glitch 2s infinite;
-  animation: pulse 2s ease-in-out infinite;
+  animation: pulse 5s ease-in-out infinite;
 }
 
 @keyframes pulse {
@@ -325,12 +325,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tagline {
+  display: inline-block;   
   font-size: 1.5rem;
   font-weight: 300;
-  margin-top: 20px;
+  margin-top: 20  px;
   letter-spacing: 3px;
   opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: .15em solid var(--primary-color);
+  animation: blink-cursor 1s infinite;
 }
+
+@keyframes blink-cursor {
+  0%, 100%   { border-color: transparent; }
+  50%  { border-color: var(--primary-color); }
+}
+
+.tagline.typing {
+  animation: blink-cursor 1s infinite;
+}
+
+
 
 /* Sections */
 section {
