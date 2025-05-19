@@ -56,8 +56,6 @@ function typewriterEffect(selector, speed = 100) {
         if (i < text.length) {
             el.textContent += text.charAt(i++);
             setTimeout(type, speed);
-        } else {
-            el.classList.remove('typing');
         }
     }
     type();

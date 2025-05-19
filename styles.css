@@ -334,7 +334,6 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
   overflow: hidden;
   border-right: .15em solid var(--primary-color);
-  animation: blink-cursor 1s infinite;
 }
 
 @keyframes blink-cursor {
@@ -597,5 +596,23 @@ section h2 {
     width: 80px;
     height: 80px;
     font-size: 2rem;
+  }
+}
+
+/* Override tagline wrapping on tablets and smaller */
+@media (max-width: 768px) {
+  .tagline {
+    white-space: normal;       /* allow wrapping */
+    word-break: break-word;    /* break long words if needed */
+    max-width: 90%;            /* optional: keep it from touching the edges */
+    margin: 0 auto;            /* center within its container */
+  }
+}
+
+/* Further tweak on very small phones */
+@media (max-width: 480px) {
+  .tagline {
+    font-size: 1rem;           /* make sure it still fits nicely */
+    letter-spacing: 2px;
   }
 }
