@@ -46,6 +46,53 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -1;
 }
 
+/* ===== NavBar ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+  padding: 10px 0;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 0;
+}
+
+.nav-list li a {
+  color: var(--primary-color);
+  font-family: var(--header-font);
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color var(--transition-speed);
+}
+
+.nav-list li a:hover {
+  color: var(--accent-color);
+}
+
+/* Ensure content doesn’t hide under navbar */
+.app-container,
+.header,
+main,
+.footer {
+  scroll-margin-top: 70px; /* height of navbar plus a bit */
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+
 /* Glass Morphism */
 .glass-panel {
   background: var(--glass-bg);
@@ -325,27 +372,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tagline {
-  display: inline-block;   
+  display: inline-block;
   font-size: 1.5rem;
   font-weight: 300;
-  margin-top: 20  px;
+  margin-top: 20px;
   letter-spacing: 3px;
   opacity: 0.8;
-  white-space: nowrap;
+  white-space: nowrap; /* Remove if multi-line is desired */
   overflow: hidden;
-  border-right: .15em solid var(--primary-color);
+  /* Remove border-right from here */
+}
+
+.tagline.typing::after {
+  content: '';
+  display: inline-block;
+  width: 0.15em;
+  background-color: var(--primary-color);
+  height: 1.2em;
+  vertical-align: middle;
+  animation: blink-cursor 1s ease-in-out infinite;
+  opacity: 0; /* Start with invisible cursor */
 }
 
 @keyframes blink-cursor {
-  0%, 100%   { border-color: transparent; }
-  50%  { border-color: var(--primary-color); }
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
 }
-
-.tagline.typing {
-  animation: blink-cursor 1s infinite;
-}
-
-
 
 /* Sections */
 section {
