@@ -1,5 +1,3 @@
-/* Stylish Black & White Theme with Transparency and 3D Effects */
-
 /* Base styles and variables */
 :root {
   --primary-color: #ffffff;
@@ -90,6 +88,7 @@ main,
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 70px;
 }
 
 
@@ -377,21 +376,20 @@ html {
   font-weight: 300;
   margin-top: 20px;
   letter-spacing: 3px;
-  opacity: 0.8;
+  opacity: 1;
   white-space: nowrap; /* Remove if multi-line is desired */
   overflow: hidden;
-  /* Remove border-right from here */
 }
 
 .tagline.typing::after {
   content: '';
   display: inline-block;
-  width: 0.15em;
+  width: 0.1em;
   background-color: var(--primary-color);
   height: 1.2em;
   vertical-align: middle;
   animation: blink-cursor 1s ease-in-out infinite;
-  opacity: 0; /* Start with invisible cursor */
+  opacity: 0;
 }
 
 @keyframes blink-cursor {
@@ -470,7 +468,8 @@ section h2 {
   animation: rotate3d 8s infinite linear;
 }
 
-.logo-3d::before {
+.logo-3d::before,
+.logo-3d::after {
   content: '';
   position: absolute;
   top: -50%;
@@ -479,12 +478,43 @@ section h2 {
   height: 200%;
   background: linear-gradient(
     45deg,
-    transparent 0%,
+    transparent 40%,
     rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
+    transparent 60%
   );
   transform: rotate(45deg);
-  animation: shine 3s infinite;
+}
+
+.logo-3d::before{
+   animation: shine 8s infinite linear;
+}
+
+.logo-3d::after{
+    opacity: 0; /* Start hidden */
+    animation: fade-in 0.5s 4s forwards, shine1 8s infinite 4s linear;
+}
+
+@keyframes fade-in {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-200%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(45deg);
+  }
+}
+
+@keyframes shine1 {
+   0% {
+    transform: translateX(200%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(-200%) rotate(45deg);
+  }
 }
 
 @keyframes rotate3d {
@@ -493,17 +523,6 @@ section h2 {
   }
   100% {
     transform: perspective(500px) rotateY(360deg);
-  }
-}
-
-@keyframes shine {
-  0% {
-    left: -100%;
-    top: -100%;
-  }
-  100% {
-    left: 100%;
-    top: 100%;
   }
 }
 
@@ -668,3 +687,4 @@ section h2 {
     letter-spacing: 2px;
   }
 }
+
