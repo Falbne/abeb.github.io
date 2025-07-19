@@ -1,3 +1,59 @@
+# Deploying to GitHub Pages
+
+This project can be deployed to GitHub Pages using the `gh-pages` package. Follow these steps:
+
+## Prerequisites
+- You must have a GitHub account.
+- Your repository should be named `abeb.github.io` (which matches your GitHub Pages username repo for user/organization site).
+- You should have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+
+## 1. Install gh-pages
+
+```
+npm install gh-pages --save-dev
+```
+
+## 2. Configure package.json
+
+- Ensure your `package.json` includes the following fields:
+
+```json
+"homepage": "https://abeb.github.io/",
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+}
+```
+
+These are already set up for you.
+
+## 3. Build and Deploy
+
+To deploy your site, run:
+
+```
+npm run deploy
+```
+
+This will:
+- Build your React app for production (output to the `build` folder)
+- Publish the contents of the `build` folder to the `gh-pages` branch of your repository
+
+## 4. Access Your Site
+
+After deployment, your site will be available at:
+
+```
+https://abeb.github.io/
+```
+
+## 5. Troubleshooting
+- Make sure your repository is public.
+- If you see a blank page, check that your `homepage` field in `package.json` is correct.
+- For custom domains, see the [GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages).
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
