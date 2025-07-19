@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import './styles.css';
+import './style.css';
 import * as THREE from 'three';
 
 function App() {
-  const canvasRef = useRef();
+  const canvasRef = useRef<HTMLDivElement>(null);
 
   // 3D Animation logic
   useEffect(() => {
-    let scene, camera, renderer, particles, animationId;
+    let scene: THREE.Scene, camera: THREE.PerspectiveCamera, renderer: THREE.WebGLRenderer, particles: THREE.Points, animationId: number;
     const container = canvasRef.current;
     if (!container) return;
 
@@ -62,12 +62,12 @@ function App() {
   useEffect(() => {
     const el = document.querySelector('.tagline');
     if (!el) return;
-    const text = el.getAttribute('data-text') || el.textContent.trim();
+    const text = el.getAttribute('data-text') || el.textContent?.trim() || '';
     el.textContent = '';
     el.classList.add('typing');
     let i = 0;
     function type() {
-      if (i < text.length) {
+      if (i < text.length && el) {
         el.textContent += text.charAt(i++);
         setTimeout(type, 100);
       }
@@ -78,11 +78,13 @@ function App() {
   // Fade-in animations
   useEffect(() => {
     setTimeout(() => {
-      document.querySelector('.header').classList.add('visible');
+      const header = document.querySelector('.header');
+      if (header) header.classList.add('visible');
       document.querySelectorAll('section').forEach((section, idx) => {
         setTimeout(() => section.classList.add('visible'), 200 * (idx + 1));
       });
-      document.querySelector('.footer').classList.add('visible');
+      const footer = document.querySelector('.footer');
+      if (footer) footer.classList.add('visible');
     }, 500);
   }, []);
 
@@ -135,28 +137,12 @@ function App() {
               </div>
             </div>
           </section>
-          <section id="stack" className="stack-section glass-panel">
-            <h2>Education</h2>
-            <div className="education-card">
-              <div className="university-logo">
-                <div className="logo-3d">IU</div>
-              </div>
-              <div className="education-details">
-                <h3>Innopolis University</h3>
-                <p className="education-program">Computer Science Program</p>
-                <p>
-                  Studying at one of Russia's most innovative technical universities, 
-                  focusing on cutting-edge technology and computer science.
-                </p>
-              </div>
-            </div>
-          </section>
           <section id="contact" className="contact-section glass-panel">
             <h2>Connect With Me</h2>
             <div className="contact-methods">
               <a href="https://t.me/falbne" className="contact-card" target="_blank" rel="noopener noreferrer">
                 <div className="contact-icon">
-                  <img src={process.env.PUBLIC_URL + '/telegram-svgrepo-com.svg'} width="100%" alt="Telegram" />
+                  <img src={process.env.PUBLIC_URL + '/telegram.svg'} width="100%" alt="Telegram" />
                 </div>
                 <div className="contact-info">
                   <h3>Telegram</h3>
