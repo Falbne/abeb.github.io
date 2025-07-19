@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './style.css';
 import * as THREE from 'three';
+import StackIcon from "tech-stack-icons";
 
 function App() {
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -115,22 +116,17 @@ function App() {
       <div id="canvas-container" ref={canvasRef}></div>
       <nav className="navbar">
         <ul className="nav-list">
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#education">Education</a>
-          </li>
-          <li>
-            <a href="#contact">Connect</a>
-          </li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#contact">Connect</a></li>
         </ul>
       </nav>
       <div className="app-container">
         <header className="header">
           <div className="header-content">
-            <h1 className="glitch" data-text="Falbne">
-              Falbne
+            <h1 className="glitch" data-text="abeb">
+              abeb
             </h1>
             <p
               className="tagline"
@@ -159,10 +155,83 @@ function App() {
               </div>
             </div>
           </section>
-          <section
-            id="education"
-            className="education-section glass-panel"
-          >
+          <section id="stack" className="stack-section glass-panel">
+            <h2>Stack</h2>
+            <div className="stack-category">
+              <h3>Web Languages</h3>
+              <div className="stack-icons">
+                <div className="stack-icon-item">
+                  <StackIcon name="html5" style={{ width: 64, height: 64 }} />
+                  <span>HTML5</span>
+                </div>
+                <div className="stack-icon-item">
+                  <StackIcon name="css3" style={{ width: 64, height: 64 }} />
+                  <span>CSS3</span>
+                </div>
+                <div className="stack-icon-item">
+                  <StackIcon name="js" style={{ width: 64, height: 64 }} />
+                  <span>JavaScript</span>
+                </div>
+                <div className="stack-icon-item">
+                  <StackIcon name="typescript" style={{ width: 64, height: 64 }} />
+                  <span>TypeScript</span>
+                </div>
+              </div>
+            </div>
+            <div className="stack-category">
+              <h3>Programming Languages</h3>
+              <div className="stack-icons">
+                <div className="stack-icon-item">
+                  <StackIcon name="python" style={{ width: 64, height: 64 }} />
+                  <span>Python</span>
+                </div>
+                <div className="stack-icon-item">
+                  <StackIcon name="c++" style={{ width: 64, height: 64 }} />
+                  <span>C++</span>
+                </div>
+                <div className="stack-icon-item">
+                  <StackIcon name="java" style={{ width: 64, height: 64 }} />
+                  <span>Java</span>
+                </div>
+              </div>
+            </div>
+            <div className="stack-category">
+              <h3>Frameworks & Libraries</h3>
+              <div className="stack-icons">
+                <div className="stack-icon-item">
+                  <StackIcon name="react" style={{ width: 64, height: 64 }} />
+                  <span>React</span>
+                </div>
+              </div>
+            </div>
+            <div className="stack-category">
+              <h3>Tools & Platforms</h3>
+              <div className="stack-icons">
+                <div className="stack-icon-item">
+                  <StackIcon name="git" style={{ width: 64, height: 64 }} />
+                  <span>Git</span>
+                </div>
+                <div className="stack-icon-item">
+                  <StackIcon name="github" style={{ width: 64, height: 64 }} />
+                  <span>GitHub</span>
+                </div>
+              </div>
+            </div>
+            <div className="stack-category">
+              <h3>Operating Systems & Shells</h3>
+              <div className="stack-icons">
+                <div className="stack-icon-item">
+                  <StackIcon name="linux" style={{ width: 64, height: 64 }} />
+                  <span>Linux</span>
+                </div>
+                <div className="stack-icon-item">
+                  <StackIcon name="bash" style={{ width: 64, height: 64 }} />
+                  <span>Bash</span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="education" className="education-section glass-panel">
             <h2>Education</h2>
             <div className="education-card">
               <div className="university-logo">
@@ -192,9 +261,8 @@ function App() {
               >
                 <div className="contact-icon">
                   <img
-                    src={process.env.PUBLIC_URL + '/telegram.svg'}
+                    src="/telegram-svgrepo-com.svg"
                     width="100%"
-                    alt="Telegram"
                   />
                 </div>
                 <div className="contact-info">
