@@ -117,8 +117,8 @@ function App() {
       <nav className="navbar">
         <ul className="nav-list">
           <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
           <li><a href="#stack">Stack</a></li>
+          <li><a href="#education">Education</a></li>
           <li><a href="#contact">Connect</a></li>
         </ul>
       </nav>
@@ -158,7 +158,7 @@ function App() {
           <section id="stack" className="stack-section glass-panel">
             <h2>Stack</h2>
             <div className="stack-category">
-              <h3>Web Languages</h3>
+              <h3>Web Development</h3>
               <div className="stack-icons">
                 <div className="stack-icon-item">
                   <StackIcon name="html5" style={{ width: 64, height: 64 }} />
@@ -176,6 +176,10 @@ function App() {
                   <StackIcon name="typescript" style={{ width: 64, height: 64 }} />
                   <span>TypeScript</span>
                 </div>
+                <div className="stack-icon-item">
+                  <StackIcon name="react" style={{ width: 64, height: 64 }} />
+                  <span>React</span>
+                </div>
               </div>
             </div>
             <div className="stack-category">
@@ -192,15 +196,6 @@ function App() {
                 <div className="stack-icon-item">
                   <StackIcon name="java" style={{ width: 64, height: 64 }} />
                   <span>Java</span>
-                </div>
-              </div>
-            </div>
-            <div className="stack-category">
-              <h3>Frameworks & Libraries</h3>
-              <div className="stack-icons">
-                <div className="stack-icon-item">
-                  <StackIcon name="react" style={{ width: 64, height: 64 }} />
-                  <span>React</span>
                 </div>
               </div>
             </div>
@@ -254,7 +249,7 @@ function App() {
             <h2>Connect With Me</h2>
             <div className="contact-methods">
               <a
-                href="https://t.me/falbne"
+                href="https://t.me/abeb_dev"
                 className="contact-card"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -267,7 +262,21 @@ function App() {
                 </div>
                 <div className="contact-info">
                   <h3>Telegram</h3>
-                  <p className="contact-value">@falbne</p>
+                  <p className="contact-value">@abeb_dev</p>
+                </div>
+              </a>
+              <a
+                href="https://github.com/abeb021"
+                className="contact-card"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="contact-icon">
+                  <StackIcon name="github" />
+                </div>
+                <div className="contact-info">
+                  <h3>Github</h3>
+                  <p className="contact-value">@abeb021</p>
                 </div>
               </a>
             </div>
@@ -275,8 +284,7 @@ function App() {
         </main>
         <footer className="footer">
           <p>
-            &copy; {new Date().getFullYear()} Falbne | Innopolis
-            University Student
+            &copy; {new Date().getFullYear()} Abeb |
           </p>
         </footer>
       </div>
